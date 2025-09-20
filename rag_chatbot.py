@@ -1,12 +1,3 @@
-"""
-Complete RAG Chatbot using LangChain + FAISS + OpenAI
-====================================================
-This chatbot answers questions ONLY from the provided documents.
-It uses Retrieval-Augmented Generation (RAG) to find relevant context
-and generate accurate responses based on that context.
-"""
-
-import os
 import sys
 from typing import List, Optional
 import warnings
@@ -21,24 +12,12 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain.schema import Document
 
-# Alternative: HuggingFace embeddings (free option)
-# from langchain_community.embeddings import HuggingFaceEmbeddings
-
 
 class RAGChatbot:
-    """
-    A Retrieval-Augmented Generation (RAG) chatbot that answers questions
-    based on provided documents using LangChain, FAISS, and OpenAI.
-    """
+  
     
     def __init__(self, openai_api_key: str, use_free_models: bool = False):
-        """
-        Initialize the RAG chatbot with API credentials.
-        
-        Args:
-            openai_api_key (str): OpenAI API key for embeddings and chat
-            use_free_models (bool): If True, uses HuggingFace free models
-        """
+       
         self.openai_api_key = openai_api_key
         self.use_free_models = use_free_models
         self.vectorstore = None
@@ -67,16 +46,7 @@ class RAGChatbot:
         print("✅ RAG Chatbot initialized successfully!")
     
     def load_documents(self, file_path: str) -> List[Document]:
-        """
-        Load documents from a file or directory.
-        Supports: .txt, .pdf files, and directories with multiple files.
-        
-        Args:
-            file_path (str): Path to file or directory
-            
-        Returns:
-            List[Document]: List of loaded documents
-        """
+      
         print(f"📂 Loading documents from: {file_path}")
         
         if not os.path.exists(file_path):
@@ -329,4 +299,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
